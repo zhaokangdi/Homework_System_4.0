@@ -4,6 +4,8 @@ import Bean.Homework;
 import Bean.Student;
 import Bean.Submit;
 import Bean.Teacher;
+import Service.JDBCUtil;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -24,21 +26,21 @@ public class TeacherJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, teacher.getTeacher_name());
             stmt.executeUpdate();
 
             // 提交事务
-            JDBCUtils.commit();
+            JDBCUtil.commit();
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
     }
 
@@ -51,9 +53,9 @@ public class TeacherJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, teacher.getTeacher_name());
@@ -67,10 +69,10 @@ public class TeacherJdbc {
                 homework_list.add(homework);
             }
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
         return homework_list;
     }
@@ -83,9 +85,9 @@ public class TeacherJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, homework_title);
@@ -93,12 +95,12 @@ public class TeacherJdbc {
             stmt.executeUpdate();
 
             // 提交事务
-            JDBCUtils.commit();
+            JDBCUtil.commit();
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
     }
 
@@ -110,9 +112,9 @@ public class TeacherJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, teacher.getTeacher_name());
@@ -120,12 +122,12 @@ public class TeacherJdbc {
             stmt.executeUpdate();
 
             // 提交事务
-            JDBCUtils.commit();
+            JDBCUtil.commit();
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
     }
 
@@ -139,9 +141,9 @@ public class TeacherJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, teacher.getTeacher_name());
@@ -155,10 +157,10 @@ public class TeacherJdbc {
                 student_list.add(student);
             }
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
 
         return student_list;
@@ -174,9 +176,9 @@ public class TeacherJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, homework_title);
@@ -193,10 +195,10 @@ public class TeacherJdbc {
                 submit_list.add(submit);
             }
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
 
         return submit_list;
@@ -212,9 +214,9 @@ public class TeacherJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, homework_title);
@@ -226,10 +228,10 @@ public class TeacherJdbc {
                 content = rs.getString(1);
             }
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
 
         return content;

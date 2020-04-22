@@ -2,6 +2,7 @@ package Jdbc;
 
 import Bean.Homework;
 import Bean.Student;
+import Service.JDBCUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -23,21 +24,21 @@ public class StudentJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, student.getStudent_name());
             stmt.executeUpdate();
 
             // 提交事务
-            JDBCUtils.commit();
+            JDBCUtil.commit();
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
     }
 
@@ -51,9 +52,9 @@ public class StudentJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, student.getStudent_name());
@@ -67,10 +68,10 @@ public class StudentJdbc {
                 homework_list.add(homework);
             }
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
 
         return homework_list;
@@ -86,9 +87,9 @@ public class StudentJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, homework_title);
@@ -100,10 +101,10 @@ public class StudentJdbc {
                 number = rs.getInt(1);
             }
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
 
         if(number == 0) {
@@ -122,9 +123,9 @@ public class StudentJdbc {
 
         try {
             // 获得连接
-            connection = JDBCUtils.getConnection();
+            connection = JDBCUtil.getConnection();
             // 开启事务设置非自动提交
-            JDBCUtils.startTransaction();
+            JDBCUtil.startTransaction();
             // 获得Statement对象
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, homework_title);
@@ -134,12 +135,12 @@ public class StudentJdbc {
             stmt.executeUpdate();
 
             // 提交事务
-            JDBCUtils.commit();
+            JDBCUtil.commit();
         } catch(Exception e) {
-            JDBCUtils.rollback();
+            JDBCUtil.rollback();
         } finally {
             // 释放资源
-            JDBCUtils.release(connection, stmt, null);
+            JDBCUtil.release(connection, stmt, null);
         }
     }
 }
